@@ -68,7 +68,7 @@
     // 테이블 내 [수정]버튼을 클릭시
     // 1 -> form input에 각각 이름과 방명록 값 넣기
     // 2 -> [등록] X -> [변경], [취소] 버튼 대체 -> innerHTML
-    async function editVisitor(id) {
+    function editVisitor(id) {
       console.log('edit visitor!!');
       console.log(id); // 현재 행에 대한 id(pk)
       
@@ -78,20 +78,19 @@
      // -> axios 처리를 기다렸다가 result라는 변수에 담아야함 (동기 처리 해야 한다는 얘기)
      // -> async/await 사용 필요
     // await를 만나 PROMISE가 처리될 때까지 기다려줌
-    let result = await axios({ // back에 요청
+    let result = axios({ // back에 요청
       method: 'GET',
       url: `/visitor/get?id=${id}`
     }).then((res) => {
       console.log('1: ', res.data);
       return res.data;
-    });
-    
-    
-    console.log('2 방문자 하나 조회 결과: ', result);
+    }).then((data) => {
+
+      // console.log('2 방문자 하나 조회 결과: ', result);
     // result: { id:  2, name: '이찬혁', comment: '으라차차'}
     const form = document.forms['visitor-form'];
-    form.name.value = result.name;
-    form.comment.value = result.comment;
+    form.name.value = data.name;
+    form.comment.value = data.comment;
     // document.querySelector('#name').value = result.name;
     // document.querySelector('#comment').value = result.comment;
     // 2 -> [등록] X -> [변경], [취소] 버튼 대체
@@ -100,17 +99,8 @@
       <button type = "button" onclick="editCancel();">취소</button>
     `;
     buttonGroup.innerHTML = html;
+    })
     }
-    
-    //try-catch
-    function getError(){
-        try{
-            editProfile();
-            }catch(error) {
-            console.log('error: ', error);
-            }
-     }
-     getError();
     
     //[변경] 버튼 클릭시
     // -> 데이터 변경
@@ -192,4 +182,3 @@
       form.name.value = '';
       form.comment.value = '';
     }
-
