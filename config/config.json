@@ -3,11 +3,7 @@
     "username": "user",
     "password": "1234",
     "database": "kdt",
-<<<<<<< HEAD
     "host": "127.0.0.1",
-=======
-    "host": "115.85.183.209",
->>>>>>> f9236b320eebe703d041eb82f086f2e675f10bc6
     "dialect": "mysql"
   },
   "production": {
