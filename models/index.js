@@ -2,7 +2,7 @@
 'use strict';
 
 const Sequelize = require('sequelize');
-const config = require(__dirname + '/../config/config.json')['development'];
+const config = require(__dirname + '/../config/config.json')['production'];
 // const a = require(__dirname + '/../config/config.json');
 // const a = {
 //   "development": { "username": "user", "password": "1234", "database": "kdt", "host": "127.0.0.1", "dialect": "mysql" },
