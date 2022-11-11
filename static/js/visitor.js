@@ -84,6 +84,8 @@
     }).then((res) => {
       console.log('1: ', res.data);
       return res.data;
+    }).catch((err) => {
+        throw err;
     });
     console.log('2 방문자 하나 조회 결과: ', result);
     // result: { id:  2, name: '이찬혁', comment: '으라차차'}
