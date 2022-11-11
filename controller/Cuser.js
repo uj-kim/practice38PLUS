@@ -16,7 +16,7 @@ exports.postSignin = (req, res) => {
     models.User.findOne({
         where: {userid: req.body.userid, pw: req.body.pw}
     }).then((result) => {
-        if ( result == undefined){
+        if ( result == null){
             return res.send(false);
             }
             res.send(true);
@@ -54,7 +54,7 @@ exports.postProfile = (req, res) => {
     models.User.findOne({
         where: {userid: req.body.userid}
     }).then((result)=>{
-        if ( result === undefined){
+        if ( result === null){
             res.redirect('/user/signin');
             }
             res.render('profile', {data: result});
